@@ -9,6 +9,8 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { RecuperateComponent } from './recuperate/recuperate.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { DefaultComponent } from './layouts/default/default.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,11 +18,18 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
-  { path: 'admin', component: BoardAdminComponent },
+  /*{ path: 'admin', component: BoardAdminComponent },*/
+ {path:'admin', component: DefaultComponent,
+ children:[{
+  path:'',
+  component:DashboardComponent
+}]
+},
   /* { path: 'recuperate', component: RecuperateComponent }, */
   { path: 'reset', component: ResetPasswordComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
